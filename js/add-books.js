@@ -47,7 +47,3 @@ function removeBook(index) {
 
 add.addEventListener('click', addBooks);
 showBooks();
-
-// setTimeout(()=>{
-// window.location.reload()
-// }, 1000)
