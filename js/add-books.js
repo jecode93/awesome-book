@@ -33,7 +33,7 @@ function addBooks(event) {
     author.value = '';
     error.innerHTML = '';
   } else {
-    error.innerHTML = 'Please enter a book'
+    error.innerHTML = 'Please enter a book';
   }
 }
 
@@ -42,6 +42,8 @@ function removeBook(index) {
   localStorage.setItem('books', JSON.stringify(bookStore));
   showBooks();
 }
+
+removeBook();
 
 add.addEventListener('click', addBooks);
 showBooks();
