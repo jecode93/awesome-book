@@ -30,6 +30,7 @@ function addBooks(event){
       };
     bookStore.push(newBooks);
 	  localStorage.setItem('books', JSON.stringify(bookStore));
+    showBooks();
     title.value = '';
     author.value = '';
     error.innerHTML = '';
@@ -42,7 +43,6 @@ function removeBook(index) {
   bookStore.splice(index, 1);
   localStorage.setItem('books', JSON.stringify(bookStore));
   showBooks();
-
 }
 
 add.addEventListener('click', addBooks);
