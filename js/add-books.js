@@ -6,26 +6,26 @@ const error = document.querySelector('.error');
 
 const bookStore = JSON.parse(localStorage.getItem('books')) || [];
 
-function showBooks() {
-for (let i = 0; i < bookStore.length; i += 1) {
-  allBooks.innerHTML += `
-  <article class="books">
-    <p>${bookStore[i].title}</p>
-    <p>${bookStore[i].author}</p>
-    <button class="remove" onclick="removeBook(${i})">Remove</button>
-    <hr>
-  </article>
-`
-};
-};
+  function showBooks() {
+  for (let i = 0; i < bookStore.length; i += 1) {
+    allBooks.innerHTML += `
+    <article class="books">
+      <p>${bookStore[i].title}</p>
+      <p>${bookStore[i].author}</p>
+      <button class="remove" onclick="removeBook(${i})">Remove</button>
+      <hr>
+    </article>
+`;
+    };
+  }
 
   function addBooks(event) {
     event.preventDefault();
-    if(title.value && author.value) {
+    if (title.value && author.value) {
       const newBooks = {
-          title: title.value,
-          author: author.value,
-        };
+        title: title.value,
+        author: author.value,
+      };
       bookStore.push(newBooks);
 	    localStorage.setItem('books', JSON.stringify(bookStore));
       showBooks();
