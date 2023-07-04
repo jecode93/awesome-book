@@ -7,43 +7,47 @@ const error = document.querySelector('.error');
 const bookStore = JSON.parse(localStorage.getItem('books')) || [];
 
 function showBooks() {
-  for (let i = 0; i < bookStore.length; i += 1) {
-    allBooks.innerHTML += `
+  const displayBooks = bookStore.map((book, index) => `
     <article class="books">
-      <p>${bookStore[i].title}</p>
-      <p>${bookStore[i].author}</p>
-      <button class="remove" onclick="removeBook(${i})">Remove</button>
-      <hr>
+      <p>${book.title}</p>
+      <p>${book.author}</p>
+      <button class="remove" onclick="removeBook(${index})">Remove</button>
+      <hr />
     </article>
-`;
+`);
+  allBooks.innerHTML =  displayBooks.join('');
+}
+
+function addBooks() {
+  if (title.value !== '' && author.value !== '') {
+    bookStore.push({ title: title.value, author: author.value });
   }
 }
 
-function addBooks(event) {
-  event.preventDefault();
-  if (title.value && author.value) {
-    const newBooks = {
-      title: title.value,
-      author: author.value,
-    };
-    bookStore.push(newBooks);
-    localStorage.setItem('books', JSON.stringify(bookStore));
-    showBooks();
-    title.value = '';
-    author.value = '';
-    error.innerHTML = '';
-  } else {
-    error.innerHTML = 'Please enter a book';
-  }
-}
-
-function removeBook(index) {
-  bookStore.splice(index, 1);
+function saveBooks() {
   localStorage.setItem('books', JSON.stringify(bookStore));
+}
+
+function clearInput() {
+  title.value = '';
+  author.value = '';
+}
+
+function removeBook(index) { 
+  // eslint-disable-line no-unused-vars
+  bookStore.splice(index, 1);
+  saveBooks();
   showBooks();
 }
 
-removeBook();
+add.addEventListener('click', (e) => {
+  e.preventDefault();
+  addBooks();
+  saveBooks();
+  showBooks();
+  clearInput();
+});
 
-add.addEventListener('click', addBooks);
-showBooks();
+window.addEventListener('DOMContentLoaded', () => {
+  showBooks();
+});
