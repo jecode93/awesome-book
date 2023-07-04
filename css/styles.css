@@ -10,7 +10,8 @@ body {
   align-items: center;
 }
 
-.book-details .title, .book-details span {
+.book-details .title,
+.book-details span {
   margin-right: 1rem;
 }
 
