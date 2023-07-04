@@ -9,20 +9,18 @@
 <body>
   <h1>Awesome books</h1>
 
-<!-- All books -->
-<section id="all-books">
-
-<p class="error"></p>
-</section>
-
-<section id="create-book">
-  <h2>Add new book</h2>
-  <form>
-    <input type="text" placeholder="Title" name="title" id="title" class="title" required><br><br>
-    <input type="text" placeholder="Author" name="author" id="author" class="author" required><br><br>
-	  <button type="submit" class="submit">Add</button>
-  </form>
-</section>
+  <section id="list">
+    <div class="list-book"></div>  
+  </section>
+<div class="separator"></div>
+  <section id="add-new" class="add-book flex">
+    <h2>Add a new book</h2>
+    <form>
+      <input name="title" value="" placeholder="Title" id="title" required><br><br>
+      <input name="author" value="" placeholder="Author" id="author" required><br><br>
+      <button type="submit" class="submit">Add</button>
+    </form>
+  </section>
 
 <script src="js/add-books.js"></script>
 </body>
