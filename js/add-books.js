@@ -1,3 +1,4 @@
+/* eslint-disable max-classes-per-file */
 class Book {
   constructor(title, author) {
     this.title = title;
@@ -71,7 +72,7 @@ const display = () => {
   });
 };
 
-
+/* eslint-disable no-unused-vars */
 const removeBook = (index) => {
   bookList.remove(index);
   display();
