@@ -1,51 +1,94 @@
-const title = document.querySelector('#title');
-const author = document.querySelector('#author');
-const add = document.querySelector('.submit');
-const allBooks = document.querySelector('#all-books');
-
-const bookStore = JSON.parse(localStorage.getItem('books')) || [];
-
-function showBooks() {
-  const displayBooks = bookStore.map((book, index) => `
-    <article class="books">
-      <p>${book.title}</p>
-      <p>${book.author}</p>
-      <button class="remove" onclick="removeBook(${index})">Remove</button>
-      <hr />
-    </article>
-`);
-  allBooks.innerHTML = displayBooks.join('');
-}
-
-function addBooks() {
-  if (title.value !== '' && author.value !== '') {
-    bookStore.push({ title: title.value, author: author.value });
+/* eslint-disable max-classes-per-file */
+class Book {
+  constructor(title, author) {
+    this.title = title;
+    this.author = author;
   }
 }
 
-function saveBooks() {
-  localStorage.setItem('books', JSON.stringify(bookStore));
+class BookList {
+  constructor() {
+    this.bookList = [];
+    this.localStorage = window.localStorage;
+  }
+
+  add(book) {
+    if (book) {
+      this.bookList.push(book);
+      this.localStorage.setItem('books', JSON.stringify(this.bookList));
+    }
+  }
+
+  remove(index) {
+    this.bookList = this.bookList.filter((book) => book.title !== this.bookList[index].title);
+    this.localStorage.setItem('books', JSON.stringify(this.bookList));
+  }
+
+  allBook() {
+    const data = this.localStorage.getItem('books');
+
+    if (data) {
+      this.bookList = JSON.parse(data);
+    } else {
+      this.bookList = [];
+    }
+    return this.bookList;
+  }
 }
 
-function clearInput() {
-  title.value = '';
-  author.value = '';
-}
+const bookList = new BookList();
+const contain = document.querySelector('.list-book');
 
-function removeBook(index) { // eslint-disable-line no-unused-vars
-  bookStore.splice(index, 1);
-  saveBooks();
-  showBooks();
-}
+const addBook = (book) => {
+  bookList.add(book);
+};
 
-add.addEventListener('click', (e) => {
+const form = document.querySelector('form');
+
+const display = () => {
+  const books = bookList.allBook();
+  contain.innerHTML = '';
+  let currentColor = '#dddddd';
+  books.forEach((book, i) => {
+    const bookItem = `
+      <div class="book-details flex">
+        <p class="title">"${book.title}"</p>
+        <span> by </span>
+        <p class="author">${book.author}</p>
+      </div>
+      <button onclick="removeBook(${i})">Remove</button>
+    `;
+
+    const bookContainer = document.createElement('div');
+    bookContainer.setAttribute('class', 'book flex');
+    bookContainer.innerHTML = bookItem;
+    if (currentColor !== bookContainer.style.backgroundColor) {
+      bookContainer.style.backgroundColor = currentColor;
+      currentColor = '';
+    } else {
+      currentColor = '#dddddd';
+    }
+    contain.appendChild(bookContainer);
+  });
+};
+
+/* eslint-disable no-unused-vars */
+const removeBook = (index) => {
+  bookList.remove(index);
+  display();
+};
+
+form.addEventListener('submit', (e) => {
   e.preventDefault();
-  addBooks();
-  saveBooks();
-  showBooks();
-  clearInput();
+
+  const title = form.elements.title.value;
+  const author = form.elements.author.value;
+  addBook(new Book(title, author));
+
+  display();
+  form.reset();
 });
 
-window.addEventListener('DOMContentLoaded', () => {
-  showBooks();
+window.addEventListener('load', () => {
+  display();
 });
