@@ -2,7 +2,6 @@ const title = document.querySelector('#title');
 const author = document.querySelector('#author');
 const add = document.querySelector('.submit');
 const allBooks = document.querySelector('#all-books');
-const error = document.querySelector('.error');
 
 const bookStore = JSON.parse(localStorage.getItem('books')) || [];
 
@@ -15,7 +14,7 @@ function showBooks() {
       <hr />
     </article>
 `);
-  allBooks.innerHTML =  displayBooks.join('');
+  allBooks.innerHTML = displayBooks.join('');
 }
 
 function addBooks() {
@@ -33,8 +32,7 @@ function clearInput() {
   author.value = '';
 }
 
-function removeBook(index) { 
-  // eslint-disable-line no-unused-vars
+function removeBook(index) { // eslint-disable-line no-unused-vars
   bookStore.splice(index, 1);
   saveBooks();
   showBooks();
