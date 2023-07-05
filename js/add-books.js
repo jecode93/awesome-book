@@ -51,12 +51,12 @@ const display = () => {
   let currentColor = '#dddddd';
   books.forEach((book, i) => {
     const bookItem = `
-      <div class="book-details flex">
-        <p class="title">"${book.title}"</p>
+      <div class='book-details flex'>
+        <p class='title'>'${book.title}'</p>
         <span> by </span>
-        <p class="author">${book.author}</p>
+        <p class='author'>${book.author}</p>
       </div>
-      <button onclick="removeBook(${i})">Remove</button>
+      <button onclick='removeBook(${i})'>Remove</button>
     `;
 
     const bookContainer = document.createElement('div');
@@ -71,16 +71,16 @@ const display = () => {
     contain.appendChild(bookContainer);
   });
 
-  if(books.length !== 0) {
+  if (books.length !== 0) {
     document.querySelector('.all-awesome').style.display = 'block';
-    document.querySelector('.list-book').style.border = "2px solid #000";
+    document.querySelector('.list-book').style.border = '2px solid #000';
   }
 };
 
 /* eslint-disable no-unused-vars */
 const removeBook = (index) => {
-    bookList.remove(index);
-    display();
+  bookList.remove(index);
+  display();
 };
 
 form.addEventListener('submit', (e) => {
@@ -97,36 +97,36 @@ form.addEventListener('submit', (e) => {
 window.addEventListener('load', () => {
   const bookStore = JSON.parse(localStorage.getItem('books')) || [];
 
-  if(bookStore.length !== 0){
+  if (bookStore.length !== 0) {
     const books = bookList.allBook();
     contain.innerHTML = '';
     let currentColor = '#dddddd';
     books.forEach((book, i) => {
-    const bookItem = `
-      <div class="book-details flex">
-        <p class="title">"${book.title}"</p>
-        <span> by </span>
-        <p class="author">${book.author}</p>
-      </div>
-      <button onclick="removeBook(${i})">Remove</button>
-    `;
+      const bookItem = `
+        <div class='book-details flex'>
+          <p class='title'>'${book.title}'</p>
+          <span> by </span>
+          <p class='author'>${book.author}</p>
+        </div>
+        <button onclick='removeBook(${i})'>Remove</button>
+      `;
 
-    const bookContainer = document.createElement('div');
-    bookContainer.setAttribute('class', 'book flex');
-    bookContainer.innerHTML = bookItem;
-    if (currentColor !== bookContainer.style.backgroundColor) {
-      bookContainer.style.backgroundColor = currentColor;
-      currentColor = '';
-    } else {
-      currentColor = '#dddddd';
-    }
-    contain.appendChild(bookContainer);
-  });
+      const bookContainer = document.createElement('div');
+      bookContainer.setAttribute('class', 'book flex');
+      bookContainer.innerHTML = bookItem;
+      if (currentColor !== bookContainer.style.backgroundColor) {
+        bookContainer.style.backgroundColor = currentColor;
+        currentColor = '';
+      } else {
+        currentColor = '#dddddd';
+      }
+      contain.appendChild(bookContainer);
+    });
     document.querySelector('.all-awesome').style.display = 'block';
-    document.querySelector('.list-book').style.border = "2px solid #000";
-  }   else {
-  	document.querySelector('.list-book').innerHTML = '<p class="no-book"> No book add yet</p>';
+    document.querySelector('.list-book').style.border = '2px solid #000';
+  } else {
+    document.querySelector('.list-book').innerHTML = '<p class="no-book"> No book add yet</p>';
     document.querySelector('.all-awesome').style.display = 'none';
-    document.querySelector('.list-book').style.border = "none";
+    document.querySelector('.list-book').style.border = 'none';
   }
 });
