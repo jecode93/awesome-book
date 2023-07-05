@@ -13,8 +13,8 @@ list.addEventListener('click', () => {
     document.querySelector('.list-book').style.border = 'none';
   } else {
     document.querySelector('.all-awesome').style.display = 'block';
-		/*global display, a*/
-		/*eslint no-undef: "error"*/
+    /* global display */
+    /* eslint no-undef: "error" */
     display();
   }
   document.querySelector('.contact').style.display = 'none';
