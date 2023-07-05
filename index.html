@@ -7,12 +7,26 @@
 	<title>Awesome Book</title>
 </head>
 <body>
-  <h1>Awesome books</h1>
+    <header class="flex">
+        <nav class="navbar flex">
+            <h1>All awesome Books</h1>
+            <ul class="nav-items flex">
+                <li id="list-book" class="nav-item"><a href="#">List</a></li>
+                <li id="addNew" class="nav-item"><a href="#">Add New</a></li>
+                <li id="contact" class="nav-item"><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <span class="date"></span>
+    </header>
 
-  <section id="list">
+
+  <!-- All books -->
+  <section id="list" class="list">
+    <h2 class="all-awesome">All awesome books</h2>
     <div class="list-book"></div>  
   </section>
-  <div class="separator"></div>
+
+  <!-- Add new -->
   <section id="add-new" class="add-book flex">
     <h2>Add a new book</h2>
     <form>
@@ -22,6 +36,25 @@
     </form>
   </section>
 
+  <!-- Contact -->
+    <section class="contact flex ">
+      <div class="div-contact">
+        <h2 class="contact-title">Contact Information</h2>
+        <p class="contact-info">Do you have any questions or you just want to say "Hello"?</p> 
+        <p class="call-to-action">You can reach out to us!</p>
+        <ul class="contact-list">
+            <li class="contact-item">Our Email: <a href="mailto:mail.com">mail.com</a></li>
+            <li class="contact-item">Our Phone Number: <a href="tel:+1234567890">+1234567890</a></li>
+            <li class="contact-item">Our Address: 123 Awesome Street, Awesome City</li>
+        </ul>
+      </div>
+    </section>
+
+    <!--* FOOTER -->
+    <footer>
+        <p>&copy; Copyright, website made by <strong>Jean Emmanuel Cadet</strong> and <strong>Erick Bupilipili</strong>, all rights reserved</p>
+    </footer>
 <script src="js/add-books.js"></script>
+<script src="js/menu.js"></script>
 </body>
 </html>
