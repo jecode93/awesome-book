@@ -1,27 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="css/styles.css">
-	<title>Awesome Book</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Awesome Books</title>
 </head>
 <body>
-  <h1>Awesome books</h1>
-
-  <section id="list">
-    <div class="list-book"></div>  
-  </section>
-  <div class="separator"></div>
-  <section id="add-new" class="add-book flex">
-    <h2>Add a new book</h2>
-    <form>
-      <input name="title" value="" placeholder="Title" id="title" required><br><br>
-      <input name="author" value="" placeholder="Author" id="author" required><br><br>
-      <button type="submit" class="submit">Add</button>
-    </form>
-  </section>
-
-<script src="js/add-books.js"></script>
+    <header>
+        <nav class="navbar">
+            <h1>All awesome Books</h1>
+            <ul>
+                <li id="list-book"><a href="#">List</a></li> |
+                <li id="add-new"><a href="#">Add New</a></li> |
+                <li id="contact"><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <span class="date"></span>
+    </header>
+    <section class="books"></section>
+    <section class="content"></section>
+    <section class="create-book">
+        <h2 class="add-book-title">Add a new book</h2>
+        <input type="text" placeholder="Title" class="title-value" required>
+        <input type="text" placeholder="Author" class="author-value" required>
+        <input type="submit" class="add-books" value="Add">
+    </section>
+    <section class="contact">
+        <h2 class="contact-title">Contact Us</h2>
+        <p class="contact-info">Do you have any questions or you just want to say "Hello"?</p> 
+        <p class="call-to-action">You can reach out to us!</p>
+        <ul class="contact-list">
+            <li class="contact-item">Our Email: <a href="mailto:mail.com">mail.com</a></li>
+            <li class="contact-item">Our Phone Number: <a href="tel:+1234567890">+1234567890</a></li>
+            <li class="contact-item">Our Address: 123 Awesome Street, Awesome City</li>
+        </ul>
+    </section>
+    <!--* FOOTER -->
+    <footer>
+      <p>&copy; Copyright, website made by <strong>Jean Emmanuel Cadet</strong> and <strong>Erick Bupilipili</strong>, all rights reserved</p>
+    </footer>
+    <script src="js/add-books.js"></script>
 </body>
 </html>
